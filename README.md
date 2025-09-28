@@ -21,10 +21,10 @@ A simple tool to **export and restore manually installed APT packages and Flatpa
 
 ```bash
 bash export.sh
+```
 
 ### 2. Restore on a new system
 
 ```bash
-cd output
 bash restore.sh
 
