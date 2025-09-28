@@ -20,7 +20,11 @@ A simple tool to **export and restore manually installed APT packages and Flatpa
 ### 1. Export your current software
 
 ```bash
-git clone <your-repo-url>
-cd Backup-my-Ubuntu
 bash export.sh
+
+### 2. Restore on a new system
+
+```bash
+cd output
+bash restore.sh
 
