@@ -1,4 +1,4 @@
-# Backup-my-Ubuntu
+# Ubuntu Backup Tool
 
 A simple tool to **export and restore manually installed APT packages and Flatpak apps** on Ubuntu (or Debian-based systems). This helps you migrate your custom software setup to a new system without reinstalling default system packages.
 
