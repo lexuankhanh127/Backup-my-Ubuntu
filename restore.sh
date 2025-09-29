@@ -10,9 +10,15 @@ echo "------------APT------------"
 # sudo sysctl -p
 # cat /proc/sys/vm/swappiness
 sudo apt update -y
+sudo apt-get upgrade -y
+sudo apt autoremove -y
 sudo apt install -y psensor
 sudo apt install -y git
+sudo apt install -y ibus-unikey
+ibus restart
 sudo apt autoremove -y
+sudo apt install -y flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 echo ""
 echo "------------FLATPAK------------"
