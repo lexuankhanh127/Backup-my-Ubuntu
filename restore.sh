@@ -46,6 +46,7 @@ while read -r app; do
     fi
 done < "$temp_current"
 flatpak list --app --columns=application > "$temp_current"
+flatpak update -y
 # Checking
 echo ""
 if cmp -s "$temp_current" "$temp_restore"; then
