@@ -29,6 +29,7 @@ if [ -f output/flatpak-apps.txt ]; then
     done < output/flatpak-apps.txt
 else
     echo "flatpak-apps.txt not found!"
+    exit 1
 fi
 # Uninstall Flatpak apps
 echo "------------------"
