@@ -5,44 +5,14 @@ echo "Synchronize APT and FLATPAK packages across multiple machines."
 echo ""
 echo "------------APT------------"
 # Update APT first
-sudo apt update
-# Install APT software
-if [ -f output/apt-software.txt ]; then
-    xargs -a output/apt-software.txt sudo apt install -y
-else
-    echo "apt-software.txt not found!"
-fi
-# Uninstall APT software
-echo "------------------"
-# Current list APT
-temp_current_apt=$(mktemp)
-apt-mark showmanual > "$temp_current_apt"
-echo "Current manually installed APT packages:"
-cat "$temp_current_apt"
-echo "------------------"
-# Restore list APT
-temp_restore_apt=$(mktemp)
-grep -v '^$' output/apt-software.txt > "$temp_restore_apt"
-echo "Restore manually installed APT packages:"
-cat "$temp_restore_apt"
-echo "------------------"
-# Compare lists APT
-while read -r pkg; do
-    if ! grep -qxF "$pkg" "$temp_restore_apt"; then
-        echo "Removing: $pkg"
-        sudo apt remove -y "$pkg"
-    fi
-done < "$temp_current_apt"
-sudo apt autoremove
-apt-mark showmanual > "$temp_current_apt"
-# Checking
-echo ""
-if cmp -s "$temp_current_apt" "$temp_restore_apt"; then
-    echo "✅ Success: Current and restore APT lists match exactly."
-else
-    echo "❌ Mismatch: Current and restore lists are different."
-    echo "Apps in current but not in restore:"
-fi
+# sudo nano /etc/sysctl.conf
+# vm.swappiness=10
+# sudo sysctl -p
+# cat /proc/sys/vm/swappiness
+sudo apt update -y
+sudo apt install -y psensor
+sudo apt install -y git
+sudo apt autoremove -y
 
 echo ""
 echo "------------FLATPAK------------"
