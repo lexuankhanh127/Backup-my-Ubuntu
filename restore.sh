@@ -23,10 +23,10 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 echo ""
 echo "------------FLATPAK------------"
 # Install Flatpak apps
-if [ -f output/flatpak-apps.txt ]; then
+if [ -f flatpak-apps.txt ]; then
     while read -r app; do
         flatpak install -y "$app"
-    done < output/flatpak-apps.txt
+    done < flatpak-apps.txt
 else
     echo "flatpak-apps.txt not found!"
     exit 1
@@ -41,7 +41,7 @@ cat "$temp_current"
 echo "------------------"
 # Restore list Flatpak
 temp_restore=$(mktemp)
-grep -v '^$' output/flatpak-apps.txt > "$temp_restore"
+grep -v '^$' flatpak-apps.txt > "$temp_restore"
 echo "Restore FLATPAK App IDs:"
 cat "$temp_restore"
 echo "------------------"
